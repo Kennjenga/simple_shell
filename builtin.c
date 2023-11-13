@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  *envir - prints the current_environnement
