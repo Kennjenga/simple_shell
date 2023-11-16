@@ -114,7 +114,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 void exit_e(int sig)
 {
 	if (sig == SIGINT)
-		stdout("\n($) ", STDIN_FILENO);
+		printout("\n($) ", STDIN_FILENO);
 }
 
 /**
