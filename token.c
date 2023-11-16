@@ -25,7 +25,7 @@ char **token(char *str, char *del)
 		int_del++;
 	}
 
-	vl = _realloc(vl, sizeof(*vl) * int_del, sizeof(*vl) * (int_del+ 1));
+	vl = _realloc(vl, sizeof(*vl) * int_del, sizeof(*vl) * (int_del + 1));
 	vl[int_del] = NULL;
 
 	return (vl);
@@ -86,7 +86,7 @@ void copystr(char *src, char *dest)
 
 /**
  *strlength - counts string length
- *@string: string to be counted
+ *@str: string to be counted
  *
  * Return: length of the string
  */
