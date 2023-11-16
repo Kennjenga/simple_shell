@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * non_interactiv - doesn’t interact with the user.
+ * non_interactive - doesn’t interact with the user.
  *
  * Return: void
  */
