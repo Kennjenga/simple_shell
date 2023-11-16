@@ -27,7 +27,7 @@ void non_interactive(void)
 					free(command);
 					break;
 				}
-				cmdtype = parse_command(command[0]);
+				cmdtype = parse_data(command[0]);
 				innit(command, cmdtype);
 				free(command);
 			}
