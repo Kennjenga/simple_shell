@@ -24,7 +24,7 @@ int parse_data(char *cmd)
 			return (INTERNAL_COMMAND);
 	}
 
-	path = check_path(cmd);
+	path = _ispath(cmd);
 	if (path != NULL)
 	{
 		free(path);
@@ -49,29 +49,29 @@ void exe(char **cmdtoken, int cmdtype)
 	{
 		if (execve(cmdtoken[0], cmdtoken, NULL) == -1)
 		{
-			perror(_getenv("PWD"));
+			perror(_enviro("PWD"));
 			exit(2);
 		}
 	}
 	if (cmdtype == PATH_COMMAND)
 	{
-		if (execve(check_path(cmdtoken[0]), cmdtoken, NULL) == -1)
+		if (execve(_ispath(cmdtoken[0]), cmdtoken, NULL) == -1)
 		{
-			perror(_getenv("PWD"));
+			perror(_enviro("PWD"));
 			exit(2);
 		}
 	}
 	if (cmdtype == INTERNAL_COMMAND)
 	{
-		f = get_func(cmdtoken[0]);
+		f = _func(cmdtoken[0]);
 		f(cmdtoken);
 	}
 	if (cmdtype == INVALID_COMMAND)
 	{
-		print(shell_name, STDERR_FILENO);
-		print(": 1: ", STDERR_FILENO);
-		print(cmdtoken[0], STDERR_FILENO);
-		print(": not found\n", STDERR_FILENO);
+		stdout(shell_name, STDERR_FILENO);
+		stdout(": 1: ", STDERR_FILENO);
+		stdout(cmdtoken[0], STDERR_FILENO);
+		stdout(": not found\n", STDERR_FILENO);
 		status = 127;
 	}
 }
@@ -86,14 +86,14 @@ char *_ispath(char *command)
 {
 	char **pat = NULL;
 	char *blc, *blc2, *copy;
-	char *p = _getenv("PATH");
+	char *p = __enviro("PATH");
 	int i;
 
-	if (p == NULL || _strlen(path) == 0)
+	if (p == NULL || strlength(path) == 0)
 		return (NULL);
-	copy = malloc(sizeof(*copy) * (_strlen(p) + 1));
-	_strcpy(p, copy);
-	pat = tokenizer(copy, ":");
+	copy = malloc(sizeof(*copy) * (strlength(p) + 1));
+	copystr(p, copy);
+	pat = token(copy, ":");
 	for (i = 0; pat[i] != NULL; i++)
 	{
 		blc2 = _strcat(pat[i], "/");
