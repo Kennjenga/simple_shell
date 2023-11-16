@@ -9,7 +9,7 @@
 void (*_func(char *cmd))(char **)
 {
 	int i;
-	function_map hash[] = {
+	mapper hash[] = {
 		{"env", env}, {"exit", quit}
 	};
 
