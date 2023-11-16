@@ -68,10 +68,10 @@ void exe(char **cmdtoken, int cmdtype)
 	}
 	if (cmdtype == INVALID_COMMAND)
 	{
-		stdout(shell_name, STDERR_FILENO);
-		stdout(": 1: ", STDERR_FILENO);
-		stdout(cmdtoken[0], STDERR_FILENO);
-		stdout(": not found\n", STDERR_FILENO);
+		printout(shell_name, STDERR_FILENO);
+		printout(": 1: ", STDERR_FILENO);
+		printout(cmdtoken[0], STDERR_FILENO);
+		printout(": not found\n", STDERR_FILENO);
 		status = 127;
 	}
 }
