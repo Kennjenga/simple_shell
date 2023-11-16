@@ -68,7 +68,7 @@ char *_ispath(char *);
 
 /*built_in*/
 void envir(char **);
-void exit(char **);
+void outs(char **);
 
 /*shell_utils*/
 void (*_func(char *))(char **);
