@@ -75,7 +75,7 @@ void stdout(char *str, int chan)
  * Return: void
  */
 
-void _strcpy(char *src, char *dest)
+void copystr(char *src, char *dest)
 {
 	int i = 0;
 
