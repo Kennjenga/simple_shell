@@ -13,8 +13,8 @@ void envir(char **token __attribute__((unused)))
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		print(environ[i], STDOUT_FILENO);
-		print("\n", STDOUT_FILENO);
+		stdout(environ[i], STDOUT_FILENO);
+		stdout("\n", STDOUT_FILENO);
 	}
 }
 
@@ -43,10 +43,10 @@ void exit(char **token)
 		arg = _atoi(token[1]);
 		if (arg == -1)
 		{
-			print(shell_name, STDERR_FILENO);
-			print(": 1: exit: Illegal number: ", STDERR_FILENO);
-			print(token[1], STDERR_FILENO);
-			print("\n", STDERR_FILENO);
+			stdout(shell_name, STDERR_FILENO);
+			stdout(": 1: exit: Illegal number: ", STDERR_FILENO);
+			stdout(token[1], STDERR_FILENO);
+			stdout("\n", STDERR_FILENO);
 			status = 2;
 		}
 		else
@@ -58,5 +58,5 @@ void exit(char **token)
 		}
 	}
 	else
-		print("$: exit doesn't take more than one argument\n", STDERR_FILENO);
+		stdout("$: exit doesn't take more than one argument\n", STDERR_FILENO);
 }
