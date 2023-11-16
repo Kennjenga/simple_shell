@@ -2,7 +2,7 @@
 
 /**
  *envir - prints the current_environnement
- *@token - command entered
+ *@token: command entered
  *
  *Return: void
  */
@@ -20,7 +20,7 @@ void envir(char **token __attribute__((unused)))
 
 /**
  * exit - quit the shell
- * @token -  command entered
+ * @token: command entered
  *
  * Return: void
  */
