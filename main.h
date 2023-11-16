@@ -48,7 +48,7 @@ char *_strcat(char *, char *);
 int _search(char *, char *);
 
 /*tokens*/
-void stdout(char *, int);
+void printout(char *, int);
 char **token(char *, char *);
 void del_line(char *);
 int strlength(char *);
