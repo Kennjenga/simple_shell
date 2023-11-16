@@ -53,13 +53,13 @@ void del_line(char *str)
 }
 
 /**
- *stdout - prints a string to stdout
+ *printout - prints a string to stdout
  *@chan: channel to print out to
  *@str: string to be printed
  *
  *Return: void, return nothing
  */
-void stdout(char *str, int chan)
+void printout(char *str, int chan)
 {
 	int i = 0;
 
