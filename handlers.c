@@ -118,8 +118,8 @@ void exit_e(int sig)
 }
 
 /**
- * toggle - ignores everything after a '#' 
- * @inp: input to be used
+ * toggle - ignores everything after a '#'
+ * @in: input to be used
  *
  * Return: void
  */
