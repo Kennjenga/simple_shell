@@ -14,7 +14,7 @@ int main(int argc __attribute__((unused)), char **argv)
 	int i, cmdtype = 0;
 	size_t n = 0;
 
-	sig(SIGINT, exit_e);
+	signal(SIGINT, exit_e);
 	shell_name = argv[0];
 	while (1)
 	{
