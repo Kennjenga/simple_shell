@@ -1,60 +1,45 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * tokenizer - tokenizes input and stores it into an array
- *@input_string: input to be parsed
- *@delim: delimiter to be used, needs to be one character string
+ * token - tokenizes string
+ *@str: input to be parsed
+ *@del: delimiter to be used
  *
  *Return: array of tokens
  */
 
-char **tokenizer(char *input_string, char *delim)
+char **token(char *str, char *del)
 {
-	int num_delim = 0;
-	char **av = NULL;
-	char *token = NULL;
-	char *save_ptr = NULL;
+	int int_delimeter = 0;
+	char **val = NULL;
+	char *tok = NULL;
+	char *store = NULL;
 
-	token = _strtok_r(input_string, delim, &save_ptr);
+	tok = _tokstr(str, del, &store);
 
-	while (token != NULL)
+	while (tok != NULL)
 	{
-		av = _realloc(av, sizeof(*av) * num_delim, sizeof(*av) * (num_delim + 1));
-		av[num_delim] = token;
-		token = _strtok_r(NULL, delim, &save_ptr);
-		num_delim++;
+		val = _realloc(val, sizeof(*val) * int_delimeter, sizeof(*val) * (int_delimeter + 1));
+		val[int_delimeter] = tok;
+		tok = _tokstr(NULL, del, &store);
+		int_delimeter++;
 	}
 
-	av = _realloc(av, sizeof(*av) * num_delim, sizeof(*av) * (num_delim + 1));
-	av[num_delim] = NULL;
+	val = _realloc(val, sizeof(*val) * int_delimeter, sizeof(*val) * (int_delimeter+ 1));
+	val[int_delimeter] = NULL;
 
-	return (av);
+	return (val);
 }
 
 /**
- *print - prints a string to stdout
- *@string: string to be printed
- *@stream: stream to print out to
- *
- *Return: void, return nothing
- */
-void print(char *string, int stream)
-{
-	int i = 0;
-
-	for (; string[i] != '\0'; i++)
-		write(stream, &string[i], 1);
-}
-
-/**
- *remove_newline - removes new line from a string
+ *del_line - removes new line from a string
  *@str: string to be used
  *
  *
  *Return: void
  */
 
-void remove_newline(char *str)
+void del_line(char *str)
 {
 	int i = 0;
 
@@ -68,36 +53,51 @@ void remove_newline(char *str)
 }
 
 /**
- *_strcpy - copies a string to another buffer
- *@source: source to copy from
+ *stdout - prints a string to stdout
+ *@chan: channel to print out to
+ *@str: string to be printed
+ *
+ *Return: void, return nothing
+ */
+void stdout(char *str, int chan)
+{
+	int i = 0;
+
+	for (; str[i] != '\0'; i++)
+		write(chan, &str[i], 1);
+}
+
+/**
+ *copystr - copies a string to another buffer
+ *@src: source to copy from
  *@dest: destination to copy to
  *
  * Return: void
  */
 
-void _strcpy(char *source, char *dest)
+void _strcpy(char *src, char *dest)
 {
 	int i = 0;
 
-	for (; source[i] != '\0'; i++)
-		dest[i] = source[i];
+	for (; src[i] != '\0'; i++)
+		dest[i] = src[i];
 	dest[i] = '\0';
 }
 
 /**
- *_strlen - counts string length
+ *strlength - counts string length
  *@string: string to be counted
  *
  * Return: length of the string
  */
 
-int _strlen(char *string)
+int strlength(char *str)
 {
-	int len = 0;
+	int length = 0;
 
-	if (string == NULL)
-		return (len);
-	for (; string[len] != '\0'; len++)
+	if (str == NULL)
+		return (length);
+	for (; str[length] != '\0'; length++)
 		;
-	return (len);
+	return (length);
 }
