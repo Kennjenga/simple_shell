@@ -2,32 +2,32 @@
 
 /**
  * _func - takes a func based on a commmand
- * @cmd: string to check against the mapping
+ * @cmd: string to check against the hash
  *
  * Return: (pointer to function)success else null 
  */
 void (*_func(char *cmd))(char **)
 {
 	int i;
-	function_map mapping[] = {
+	function_map hash[] = {
 		{"env", env}, {"exit", quit}
 	};
 
 	for (i = 0; i < 2; i++)
 	{
-		if (_strcmp(cmd, mapping[i].command_name) == 0)
-			return (mapping[i].func);
+		if (_strcmp(cmd, hash[i].command_name) == 0)
+			return (hash[i].func);
 	}
 	return (NULL);
 }
 
 /**
- * _getenv - env var value
+ * _enviro - env var value
  * @name: name of environment var
  *
  * Return: value of var -- success
  */
-char *_getenv(char *n)
+char *_enviro(char *n)
 {
 	char **env;
 	char *sim;
