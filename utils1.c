@@ -1,10 +1,11 @@
 #include "main.h"
 
-/** parse_data- analyzing command
- * @cmd: command to be parsed
- *
- * Return: cmdtype
- */
+/**
+*parse_data- analyzing command
+* @cmd: command to be parsed
+*
+*Return: cmdtype
+*/
 
 int parse_data(char *cmd)
 {
@@ -22,7 +23,7 @@ int parse_data(char *cmd)
 		if (_strcmp(cmd, internal_cmd[i]) == 0)
 			return (INTERNAL_COMMAND);
 	}
-	
+
 	path = check_path(cmd);
 	if (path != NULL)
 	{
@@ -34,7 +35,7 @@ int parse_data(char *cmd)
 }
 
 /**
- * exe - executes a command 
+* exe - executes a command
  * @cmdtoken: tokenized command
  * @cmdtype: type of  command
  *
