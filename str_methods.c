@@ -32,12 +32,12 @@ int _strcmp(char *stra, char *strb)
 char *_strcat(char *dest, char *src)
 {
 	char *new_string =  NULL;
-	int len_dest = _strlen(dest);
-	int len_src = _strlen(src);
+	int len_dest = strlength(dest);
+	int len_src = strlength(src);
 
 	new_string = malloc(sizeof(*new_string) * (len_dest + len_src + 1));
-	_strcpy(dest, new_string);
-	_strcpy(src, new_string + len_dest);
+	copystr(dest, new_string);
+	copystr(src, new_string + len_dest);
 	new_string[len_dest + len_src] = '\0';
 	return (new_string);
 }
