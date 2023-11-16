@@ -16,7 +16,7 @@ void innit(char **command, int cmdtype)
 	{
 		PID = fork();
 		if (PID == 0)
-			execute_command(command, cmdtype);
+			exe(command, cmdtype);
 		else
 		{
 			waitpid(PID, &status, 0);
@@ -24,5 +24,5 @@ void innit(char **command, int cmdtype)
 		}
 	}
 	else
-		execute_command(command, cmdtype);
+		exe(command, cmdtype);
 }
