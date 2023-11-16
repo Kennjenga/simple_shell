@@ -19,13 +19,13 @@ void envir(char **token __attribute__((unused)))
 }
 
 /**
- * exit - quit the shell
+ * outs - quit the shell
  * @token: command entered
  *
  * Return: void
  */
 
-void exit(char **token)
+void outs(char **token)
 {
 	int num_token = 0, arg;
 
