@@ -10,8 +10,8 @@
 
 char **token(char *str, char *del)
 {
-	int int_delimeter = 0;
-	char **val = NULL;
+	int int_del = 0;
+	char **vl = NULL;
 	char *tok = NULL;
 	char *store = NULL;
 
@@ -19,16 +19,16 @@ char **token(char *str, char *del)
 
 	while (tok != NULL)
 	{
-		val = _realloc(val, sizeof(*val) * int_delimeter, sizeof(*val) * (int_delimeter + 1));
-		val[int_delimeter] = tok;
+		vl = _realloc(vl, sizeof(*vl) * int_del, sizeof(*vl) * (int_del + 1));
+		vl[int_del] = tok;
 		tok = _tokstr(NULL, del, &store);
-		int_delimeter++;
+		int_del++;
 	}
 
-	val = _realloc(val, sizeof(*val) * int_delimeter, sizeof(*val) * (int_delimeter+ 1));
-	val[int_delimeter] = NULL;
+	vl = _realloc(vl, sizeof(*vl) * int_del, sizeof(*vl) * (int_del+ 1));
+	vl[int_del] = NULL;
 
-	return (val);
+	return (vl);
 }
 
 /**
