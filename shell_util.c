@@ -10,7 +10,7 @@ void (*_func(char *cmd))(char **)
 {
 	int i;
 	mapper hash[] = {
-		{"env", env}, {"exit", quit}
+		{"env", envir}, {"exit", outs}
 	};
 
 	for (i = 0; i < 2; i++)
