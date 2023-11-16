@@ -1,67 +1,67 @@
-#include "shell.h"
+#include "main.h"
 
 
 /**
- *_strtok_r - tokenizes a string
- *@string: string to be tokenized
- *@delim: delimiter to be used to tokenize the string
- *@save_ptr: pointer to be used to keep track of the next token
+ *_tokstr - tokenizes a string
+ *@str: string to be tokenized
+ *@del: delimiter to be used to tokenize the string
+ *@n_ptr: pointer to be used to keep track of the next token
  *
- *Return: The next available token
+ *Return: (next token)
  */
-char *_strtok_r(char *string, char *delim, char **save_ptr)
+char *_tokstr(char *str, char *del, char **n_ptr)
 {
-	char *finish;
+	char *end;
 
-	if (string == NULL)
-		string = *save_ptr;
+	if (str == NULL)
+		str = *n_ptr;
 
-	if (*string == '\0')
+	if (*str == '\0')
 	{
-		*save_ptr = string;
+		*n_ptr = str;
 		return (NULL);
 	}
 
-	string += _strspn(string, delim);
-	if (*string == '\0')
+	str += _strspn(str, del);
+	if (*str == '\0')
 	{
-		*save_ptr = string;
+		*n_ptr = str;
 		return (NULL);
 	}
 
-	finish = string + _strcspn(string, delim);
-	if (*finish == '\0')
+	end = str + _strcspn(str, del;
+	if (*end == '\0')
 	{
-		*save_ptr = finish;
-		return (string);
+		*n_ptr = end;
+		return (str);
 	}
 
-	*finish = '\0';
-	*save_ptr = finish + 1;
-	return (string);
+	*end = '\0';
+	*n_ptr = end + 1;
+	return (str);
 }
 
 /**
- * _atoi - changes a string to an integer
- * @s: the string to be changed
+ * _atoi - changes string to an integer
+ * @str: string to be changed
  *
- * Return: the converted int
+ * Return:  int
  */
-int _atoi(char *s)
+int _atoi(char *str)
 {
-	unsigned int n = 0;
+	unsigned int x = 0;
 
 	do {
-		if (*s == '-')
+		if (*str == '-')
 			return (-1);
-		else if ((*s < '0' || *s > '9') && *s != '\0')
+		else if ((*str < '0' || *str > '9') && *str != '\0')
 			return (-1);
-		else if (*s >= '0'  && *s <= '9')
-			n = (n * 10) + (*s - '0');
-		else if (n > 0)
+		else if (*str >= '0'  && *str <= '9')
+			x = (x * 10) + (*str - '0');
+		else if (x > 0)
 			break;
-	} while (*s++);
-	return (n);
+	} while (*str++);
+	return (x);
 }
 
 /**
@@ -74,13 +74,13 @@ int _atoi(char *s)
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *temp_block;
+	void *temp;
 	unsigned int i;
 
 	if (ptr == NULL)
 	{
-		temp_block = malloc(new_size);
-		return (temp_block);
+		tempk = malloc(new_size);
+		return (temp);
 	}
 	else if (new_size == old_size)
 		return (ptr);
@@ -91,13 +91,13 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	else
 	{
-		temp_block = malloc(new_size);
-		if (temp_block != NULL)
+		temp = malloc(new_size);
+		if (temp != NULL)
 		{
 			for (i = 0; i < min(old_size, new_size); i++)
-				*((char *)temp_block + i) = *((char *)ptr + i);
+				*((char *)temp + i) = *((char *)ptr + i);
 			free(ptr);
-			return (temp_block);
+			return (temp);
 		}
 		else
 			return (NULL);
@@ -106,34 +106,34 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * ctrl_c_handler - handles the signal raised by CTRL-C
- * @signum: signal number
+ * exit_e - handles the signal raised by CTRL-C
+ * @sig: signal number
  *
  * Return: void
  */
-void ctrl_c_handler(int signum)
+void exit_e(int sig)
 {
-	if (signum == SIGINT)
+	if (sig == SIGINT)
 		print("\n($) ", STDIN_FILENO);
 }
 
 /**
- * remove_comment - removes/ignores everything after a '#' char
- * @input: input to be used
+ * toggle - ignores everything after a '#' 
+ * @inp: input to be used
  *
  * Return: void
  */
-void remove_comment(char *input)
+void toggle(char *in)
 {
 	int i = 0;
 
-	if (input[i] == '#')
-		input[i] = '\0';
-	while (input[i] != '\0')
+	if (in[i] == '#')
+		in[i] = '\0';
+	while (in[i] != '\0')
 	{
-		if (input[i] == '#' && input[i - 1] == ' ')
+		if (in[i] == '#' && in[i - 1] == ' ')
 			break;
 		i++;
 	}
-	input[i] = '\0';
+	in[i] = '\0';
 }
