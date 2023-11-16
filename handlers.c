@@ -22,14 +22,14 @@ char *_tokstr(char *str, char *del, char **n_ptr)
 		return (NULL);
 	}
 
-	str += _strspn(str, del);
+	str += _substr(str, del);
 	if (*str == '\0')
 	{
 		*n_ptr = str;
 		return (NULL);
 	}
 
-	end = str + _strcspn(str, del;
+	end = str + _search(str, del;
 	if (*end == '\0')
 	{
 		*n_ptr = end;
@@ -79,7 +79,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 	if (ptr == NULL)
 	{
-		tempk = malloc(new_size);
+		temp = malloc(new_size);
 		return (temp);
 	}
 	else if (new_size == old_size)
@@ -114,7 +114,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 void exit_e(int sig)
 {
 	if (sig == SIGINT)
-		print("\n($) ", STDIN_FILENO);
+		stdout("\n($) ", STDIN_FILENO);
 }
 
 /**
