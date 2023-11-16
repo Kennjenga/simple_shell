@@ -63,8 +63,8 @@ void exe(char **cmdtoken, int cmdtype)
 	}
 	if (cmdtype == INTERNAL_COMMAND)
 	{
-		f = _func(cmdtoken[0]);
-		f(cmdtoken);
+		func = _func(cmdtoken[0]);
+		func(cmdtoken);
 	}
 	if (cmdtype == INVALID_COMMAND)
 	{
@@ -86,10 +86,10 @@ char *_ispath(char *command)
 {
 	char **pat = NULL;
 	char *blc, *blc2, *copy;
-	char *p = __enviro("PATH");
+	char *p = _enviro("PATH");
 	int i;
 
-	if (p == NULL || strlength(path) == 0)
+	if (p == NULL || strlength(p) == 0)
 		return (NULL);
 	copy = malloc(sizeof(*copy) * (strlength(p) + 1));
 	copystr(p, copy);
