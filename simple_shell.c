@@ -19,7 +19,7 @@ int main(int argc __attribute__((unused)), char **argv)
 	while (1)
 	{
 		non_interactive();
-		stdout(" ($) ", STDOUT_FILENO);
+		printout(" ($) ", STDOUT_FILENO);
 		if (getline(&line, &n, stdin) == -1)
 		{
 			free(line);
