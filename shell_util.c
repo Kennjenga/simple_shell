@@ -4,7 +4,7 @@
  * _func - takes a func based on a commmand
  * @cmd: string to check against the hash
  *
- * Return: (pointer to function)success else null 
+ * Return: (pointer to function)success else null
  */
 void (*_func(char *cmd))(char **)
 {
@@ -23,7 +23,7 @@ void (*_func(char *cmd))(char **)
 
 /**
  * _enviro - env var value
- * @name: name of environment var
+ * @n: name of environment var
  *
  * Return: value of var -- success
  */
