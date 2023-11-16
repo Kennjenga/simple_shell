@@ -29,7 +29,7 @@ char *_tokstr(char *str, char *del, char **n_ptr)
 		return (NULL);
 	}
 
-	end = str + _search(str, del;
+	end = str + _search(str, del);
 	if (*end == '\0')
 	{
 		*n_ptr = end;
